@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Proposal</title>
+    <!-- Importing Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #fbc2eb, #a18cd1);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .page {
+            display: none;
+            padding: 20px;
+            min-height: 100vh;
+            box-sizing: border-box; /* Ensures padding doesn't overflow */
+            overflow-y: auto; /* Allows scrolling for overflowing content */
+        }
+        .active {
+            display: block;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 2.5em; /* Smaller font size for mobile screens */
+            color: #6a097d;
+            margin-bottom: 20px;
+        }
+        p {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 1.2em; /* Smaller font size for readability on phones */
+            margin-bottom: 30px;
+        }
+        button {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #5e548e;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-shadow: 1px 1px 1px #000;
+        }
+        button:hover {
+            background-color: #9f86c0;
+        }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            animation: floatHeart 6s infinite ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div class="hearts">
+        <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="heart" style="left: 30%; animation-delay: 1.5s;"></div>
+        <div class="heart" style="left: 50%; animation-delay: 0.5s;"></div>
+        <div class="heart" style="left: 70%; animation-delay: 2.5s;"></div>
+        <div class="heart" style="left: 90%; animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Pages -->
+    <div id="page1" class="page active">
+        <h1>Eid Mubarak! 🌙✨</h1>
+        <p>"تقبل الله منا ومنكم صالح الأعمال"<br>May Allah accept our good deeds and bless you abundantly!</p>
+        <button onclick="nextPage('page2')">Next</button>
+    </div>
+    <div id="page2" class="page">
+        <h1>Eid is More Beautiful with You 🌸</h1>
+        <p>Your eyes shine like the stars, lighting up my world with endless beauty and grace.</p>
+        <button onclick="nextPage('page3')">Next</button>
+    </div>
+    <div id="page3" class="page">
+        <h1>Will You Give Me a Chance? 💖</h1>
+        <p>Since I found you, my days have been filled with happiness and hope. Will you give me the opportunity to share this beautiful journey with you?</p>
+        <button onclick="handleChoice('yes')">Yes</button>
+        <button onclick="handleChoice('no')">No</button>
+    </div>
+    <div id="yesPage" class="page">
+        <h1>I'm Overjoyed! ❤️</h1>
+        <p>You've made my day truly special. I promise to cherish every moment with you and create a lifetime of happiness together.</p>
+        <p><strong>Note:</strong> Please take a screenshot and share it with me so I can see your response! 📸</p>
+    </div>
+    <div id="noPage" class="page">
+        <h1>Thank You for Your Response 🌹</h1>
+        <p>Maybe not now, but I believe in a future where your answer might change. Wishing you endless happiness and blessings.</p>
+        <p><strong>Note:</strong> Please take a screenshot and share it with me so I can understand your response! 📸</p>
+    </div>
+    <script>
+        function nextPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function handleChoice(choice) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(choice === 'yes' ? 'yesPage' : 'noPage').classList.add('active');
+        }
+    </script>
+</body>
+</html>
